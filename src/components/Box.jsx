@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Box = ({ isOn }) => {
+const Box = ({ isOn, id }) => {
   const bolb = isOn ? 'isOn' : 'isOff';
 
-  console.log(bolb)
+  // console.log(bolb)
 
   return (
-    <div className={`box ${bolb}`}></div>
+    <div id={id} className={`box ${bolb}`}></div>
   );
 }
 
