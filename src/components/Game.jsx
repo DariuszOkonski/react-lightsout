@@ -6,21 +6,21 @@ class Game extends Component {
   numberOfClumns = 5;
   numberOfRows = 5;
 
-  state = {
-    boxStates: [
-      // [true, false, true, false, false],
-      // [false, true, true, false, true],
-      // [false, false, true, false, false],
-      // [true, true, true, false, false],
-      // [true, false, true, false, false],
-      [false, false, false, false, false],
-      [false, false, false, false, false],
-      [false, false, false, false, false],
-      [false, false, false, false, false],
-      [false, false, false, false, false],
-    ],
-    singleBoxes: [],
-    updated: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      // boxStates: this.drawArray(),
+      boxStates: [
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, true],
+        [true, true, true, true, false],
+        [true, true, true, false, false],
+      ],
+      singleBoxes: [],
+      updated: false,
+      endGame: false,
+    }
   }
 
   componentDidMount() {
@@ -31,10 +31,32 @@ class Game extends Component {
     if (this.state.updated) {
       this.mapArray();
 
+      console.log('check if end');
+
       this.setState({
         updated: false
       })
     }
+  }
+
+  drawArray = () => {
+    let firstStateArray = [
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+    ]
+
+    let numbersOfRandoms = Math.floor(Math.random() * (this.numberOfClumns * 2)) + this.numberOfClumns;
+
+    for (let i = 0; i < numbersOfRandoms; i++) {
+      const col = Math.floor(Math.random() * this.numberOfClumns);
+      const row = Math.floor(Math.random() * this.numberOfClumns);
+      firstStateArray[row][col] = true;
+    }
+
+    return firstStateArray;
   }
 
   mapArray = () => {
@@ -122,9 +144,6 @@ class Game extends Component {
       updated: true,
     })
   }
-
-
-
   render() {
     const displayBoxes = this.state.singleBoxes.map(box =>
       <Box
@@ -135,11 +154,15 @@ class Game extends Component {
       />)
 
     return (
-      <div className="game-board">
-        {
-          displayBoxes
-        }
-      </div>
+      this.state.endGame ? (
+        <h1>end game</h1>
+      ) : (
+          <div className="game-board">
+            {
+              displayBoxes
+            }
+          </div>
+        )
     );
   }
 }
