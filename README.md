@@ -10,3 +10,4 @@ to light on all light-blue lights to finish a game.
 - React
 - HTML
 - SCSS
+- Keyframes
