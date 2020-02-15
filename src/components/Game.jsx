@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Box from './Box';
 import uuid from 'uuid/v1';
+import EndGame from './EndGame';
 
 class Game extends Component {
   numberOfClumns = 5;
@@ -31,12 +32,30 @@ class Game extends Component {
     if (this.state.updated) {
       this.mapArray();
 
-      console.log('check if end');
+      this.checkEndGame();
 
       this.setState({
         updated: false
       })
     }
+  }
+
+  checkEndGame = () => {
+    console.log('function checkEndGame')
+  }
+
+  restartGame = () => {
+    const boxStates = this.drawArray();
+    console.log(boxStates);
+
+    this.setState({
+      boxStates: boxStates,
+      singleBoxes: [],
+      updated: true,
+      endGame: false,
+    });
+
+    this.componentDidUpdate();
   }
 
   drawArray = () => {
@@ -155,7 +174,7 @@ class Game extends Component {
 
     return (
       this.state.endGame ? (
-        <h1>end game</h1>
+        <EndGame restartGame={this.restartGame} />
       ) : (
           <div className="game-board">
             {
