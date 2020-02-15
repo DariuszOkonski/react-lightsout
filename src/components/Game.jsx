@@ -41,12 +41,24 @@ class Game extends Component {
   }
 
   checkEndGame = () => {
-    console.log('function checkEndGame')
+    let endGame = false;
+    for (let row = 0; row < this.numberOfRows; row++) {
+      for (let col = 0; col < this.numberOfClumns; col++) {
+        if (this.state.boxStates[row][col] === false) {
+          endGame = true;
+        }
+      }
+    }
+
+    if (!endGame) {
+      this.setState({
+        endGame: true,
+      })
+    }
   }
 
   restartGame = () => {
     const boxStates = this.drawArray();
-    console.log(boxStates);
 
     this.setState({
       boxStates: boxStates,
@@ -93,8 +105,6 @@ class Game extends Component {
   }
 
   switchBoxState = (col, row, boxStates) => {
-    // console.log(`col: ${col} row: ${row}... ${this.numberOfClumns}`)
-
     if (col === 0 && row === 0) {
       //left top corner
       boxStates[row][col] = !boxStates[row][col];
