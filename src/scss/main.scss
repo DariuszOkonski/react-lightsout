@@ -78,6 +78,34 @@ body {
   }
 }
 
+.endGame {
+  color: #fff;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 2px;
+  text-align: center;
+
+  .btn {
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: lighten($color: blue, $amount: 10%);
+    color: #fff;
+    transition: all .2s ease;
+
+    &:hover {
+      background-color: darken($color: blue, $amount: 10%);
+      border-color: #000;
+      color: #000;
+    }
+  }
+}
+
 //keyframes ===========================================================
 @keyframes shadowbliknking {
   30% {

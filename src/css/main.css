@@ -94,6 +94,35 @@ body {
   background-color: #3f3e3e;
 }
 
+.endGame {
+  color: #fff;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.endGame .btn {
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: #3333ff;
+  color: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.endGame .btn:hover {
+  background-color: #0000cc;
+  border-color: #000;
+  color: #000;
+}
+
 @-webkit-keyframes shadowbliknking {
   30% {
     -webkit-box-shadow: 0px 0px 40px -15px #b5b5a5;
